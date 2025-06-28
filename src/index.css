@@ -5,6 +5,35 @@
 :root {
   --primary-color: #0ea5e9;
   --secondary-color: #64748b;
+  
+  /* Light Mode Sidebar Colors */
+  --sidebar-bg: white;
+  --sidebar-border: #e5e7eb;
+  --sidebar-hover: #f3f4f6;
+  --sidebar-active: #dbeafe;
+  --sidebar-text-primary: #111827;
+  --sidebar-text-secondary: #6b7280;
+}
+
+[data-theme="dark"] {
+  /* Dark Mode Sidebar Colors */
+  --sidebar-bg: #1f2937;
+  --sidebar-border: #374151;
+  --sidebar-hover: #374151;
+  --sidebar-active: #1e40af;
+  --sidebar-text-primary: #f9fafb;
+  --sidebar-text-secondary: #d1d5db;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --sidebar-bg: #1f2937;
+    --sidebar-border: #374151;
+    --sidebar-hover: #374151;
+    --sidebar-active: #1e40af;
+    --sidebar-text-primary: #f9fafb;
+    --sidebar-text-secondary: #d1d5db;
+  }
 }
 
 body {
@@ -16,4 +45,22 @@ body {
 
 #root {
   height: 100vh;
+}
+
+/* Custom scrollbar for sidebar */
+.sidebar-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background: var(--sidebar-border);
+  border-radius: 2px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--sidebar-text-secondary);
 }
