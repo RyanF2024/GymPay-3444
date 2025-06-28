@@ -22,6 +22,23 @@ app.use((req, res, next) => {
   next();
 });
 
+// Root route for backend
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'GymPay Backend API',
+    version: '1.0.0',
+    status: 'running',
+    endpoints: {
+      health: '/health',
+      test: '/api/test',
+      gyms: '/api/gyms',
+      instructors: '/api/instructors',
+      payroll: '/api/payroll',
+      analytics: '/api/analytics/overview'
+    }
+  });
+});
+
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.json({ 
@@ -143,20 +160,29 @@ app.use((err, req, res, next) => {
   });
 });
 
-// 404 handler
+// 404 handler - only for API routes
+app.use('/api/*', (req, res) => {
+  res.status(404).json({ 
+    error: 'API endpoint not found',
+    message: `API route ${req.originalUrl} not found`
+  });
+});
+
+// Catch-all for non-API routes
 app.use('*', (req, res) => {
   res.status(404).json({ 
     error: 'Not found',
-    message: `Route ${req.originalUrl} not found`
+    message: `This is the GymPay backend API. Frontend should be accessed at ${process.env.FRONTEND_URL || 'http://localhost:5173'}`
   });
 });
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+  console.log(`🚀 Backend server running on http://localhost:${PORT}`);
   console.log(`📊 Health check: http://localhost:${PORT}/health`);
   console.log(`🧪 Test endpoint: http://localhost:${PORT}/api/test`);
   console.log(`🏋️ Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`🎯 Frontend should be running on: ${process.env.FRONTEND_URL || 'http://localhost:5173'}`);
 });
 
 export default app;
