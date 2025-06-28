@@ -1,5 +1,5 @@
 import React from 'react';
-import { BiCrown, BiCalendar, BiDollar, BiEdit, BiExternalLink } from 'react-icons/bi';
+import { BiCrown, BiCalendar, BiDollar, BiEdit, BiLinkExternal } from 'react-icons/bi';
 import { useStripe } from '../../contexts/StripeContext';
 
 const SubscriptionStatus = () => {
@@ -138,7 +138,7 @@ const SubscriptionStatus = () => {
           onClick={handleManageSubscription}
           className="text-gray-600 hover:text-gray-900 font-medium flex items-center"
         >
-          <BiExternalLink className="h-4 w-4 mr-1" />
+          <BiLinkExternal className="h-4 w-4 mr-1" />
           View Invoice History
         </button>
         <button 
