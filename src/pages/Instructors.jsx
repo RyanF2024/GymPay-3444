@@ -5,6 +5,16 @@ import InstructorForm from '../components/instructors/InstructorForm';
 
 const Instructors = () => {
   const [showInstructorForm, setShowInstructorForm] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(0);
+
+  const handleAddInstructor = () => {
+    setShowInstructorForm(true);
+  };
+
+  const handleInstructorAdded = () => {
+    // Refresh the instructor list
+    setRefreshKey(prev => prev + 1);
+  };
 
   return (
     <div className="space-y-8">
@@ -16,7 +26,7 @@ const Instructors = () => {
           </p>
         </div>
         <button
-          onClick={() => setShowInstructorForm(true)}
+          onClick={handleAddInstructor}
           className="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md"
         >
           Add New Instructor
@@ -24,9 +34,16 @@ const Instructors = () => {
       </div>
 
       <InstructorStats />
-      <InstructorList />
+      <InstructorList 
+        key={refreshKey}
+        onAddInstructor={handleAddInstructor}
+      />
+      
       {showInstructorForm && (
-        <InstructorForm onClose={() => setShowInstructorForm(false)} />
+        <InstructorForm 
+          onClose={() => setShowInstructorForm(false)}
+          onSuccess={handleInstructorAdded}
+        />
       )}
     </div>
   );
