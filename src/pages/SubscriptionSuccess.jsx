@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { BiCheck, BiArrowRight } from 'react-icons/bi';
+import { BiCheck, BiRightArrowAlt } from 'react-icons/bi';
 import { useStripe } from '../contexts/StripeContext';
 
 const SubscriptionSuccess = () => {
@@ -74,7 +74,7 @@ const SubscriptionSuccess = () => {
             className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
           >
             Get Started
-            <BiArrowRight className="ml-2 h-4 w-4" />
+            <BiRightArrowAlt className="ml-2 h-4 w-4" />
           </button>
           
           <div className="text-center">
