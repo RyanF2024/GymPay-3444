@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BiDownload, BiEye, BiCalendar, BiDollar } from 'react-icons/bi';
+import { BiDownload, BiShow, BiCalendar, BiDollar } from 'react-icons/bi';
 import { useStripe } from '../../contexts/StripeContext';
 
 const InvoiceHistory = () => {
@@ -157,7 +157,7 @@ const InvoiceHistory = () => {
                       className="text-primary-600 hover:text-primary-900 p-1"
                       title="View Invoice"
                     >
-                      <BiEye className="h-4 w-4" />
+                      <BiShow className="h-4 w-4" />
                     </button>
                     <button
                       onClick={() => handleDownloadInvoice(invoice)}
